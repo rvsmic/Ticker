@@ -15,6 +15,8 @@ struct AddShopView: View {
     @State private var recentlyAddedShop: ShopName?
     @State private var showDeleteAlert = false
     
+    @State private var noMoreShops = false
+    
     @Binding var settings: TickerSettings
     
     var body: some View {
@@ -44,6 +46,16 @@ struct AddShopView: View {
                         withAnimation {
                             data.shops.append(Shop(name: newShop))
                             recentlyAddedShop = newShop
+                            noMoreShops = ShopName.allCases.filter { shopName in
+                                return !data.shops.map { shop in
+                                    shop.name
+                                }.contains(shopName)
+                            }.isEmpty
+                            newShop = noMoreShops ? .Somewhere : ShopName.allCases.filter { shopName in
+                                return !data.shops.map { shop in
+                                    shop.name
+                                }.contains(shopName)
+                            }.sorted()[0]
                         }
                     }) {
                         VStack {
@@ -56,9 +68,10 @@ struct AddShopView: View {
                         }
                         .foregroundColor(ShopColor.getContrastShopColor(shopName: newShop))
                     }
+                    .disabled(noMoreShops)
                     Spacer()
                 }
-                .listRowBackground(ShopColor.getShopColor(shopName: newShop))
+                .listRowBackground(noMoreShops ? .gray : ShopColor.getShopColor(shopName: newShop))
             }
             Section (header: HStack{ Text("Enabled shops"); Spacer(); Button(action: {
                 showDeleteAlert = true
