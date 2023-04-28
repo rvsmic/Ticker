@@ -19,3 +19,26 @@ Basic offline shopping list app designed for iOS devices. App supports two main 
     * Adding and deleting shops from database
     * Appropiate shop theme support
     * Managing each shop's shopping list similarly to **Simple mode**
+
+## Screenshots
+
+* **Home screen**
+<img src="/Screenshots/home.png" alt= “” width=50%>
+
+* **Settings screen**
+<img src="/Screenshots/settings.png" alt= “” width=50%>
+
+* **Simple mode**
+<img src="/Screenshots/simple.png" alt= “” width=50%>
+
+* **Shops mode**
+<img src="/Screenshots/shops.png" alt= “” width=50%>
+
+* **Single shop**
+<img src="/Screenshots/shop.png" alt= “” width=50%>
+
+* **Manage products**
+<img src="/Screenshots/add.png" alt= “” width=50%>
+
+* **Manage shops**
+<img src="/Screenshots/add_shops.png" alt= “” width=50%>
